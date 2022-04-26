@@ -22,7 +22,7 @@ def recommend(name,size=20,potential=False):
     index = df[df['Name']==name].index.tolist()[0]
     most_similar_indexes = similarity_indexes[index][1:]
     if potential:
-        return df.iloc[most_similar_indexes[:]].where(df.Age<26).sort_values('POT',ascending=False).iloc[:20].loc[:,['Name','Age','OVA','POT','Team & Contract','Height', 'Weight','Joined',
+        return df.iloc[most_similar_indexes[:]].where(df.Age<26).sort_values('POT',ascending=False).iloc[:size].loc[:,['Name','Age','OVA','POT','Team & Contract','Height', 'Weight','Joined',
         'Value', 'Wage', 'Release Clause','Attacking','Skill','Movement','Power','Mentality','Defending','Goalkeeping']]
     else:
         return df.iloc[most_similar_indexes[1:size+1]].loc[:,['Name','Age','OVA','POT','Team & Contract','Height', 'Weight','Joined',
